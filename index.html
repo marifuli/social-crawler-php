@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>My Crawler</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+        input,select{
+            width: 100%;
+            min-height: 40px;
+            border-radius: 5px;
+            padding: 3px;
+            font-size: 20px;
+            border: 2px solid rgba(66, 64, 64, 0.525);
+            
+        }
+
+        .container{
+            margin: 30px 100px;
+        }
+
+        .w-100{
+            width: 100%;
+            min-height: 1500px;
+        }
+        
+        @media only screen and (max-width: 800px) {
+            .container{
+                margin: 30px !important;
+            }
+        }
+    </style>
+</head>
+<body>
+
+
+<div class="container">
+    <div style="width: 200px;margin-bottom: 20px;" class="mt-1">
+        <select onchange="change(this)" class="form-control">
+            <option value="fb.html" selected>Facebook</option>
+            <option value="ins.html">Instagram</option>
+            <option value="link.html">LinkedIn</option>
+            <option value="pin.html">Pinterest</option>
+            <option value="tik.html">TikTok</option>
+            <option value="twi.html">Twitter</option>
+        </select>
+    </div>
+    <center>
+        <h1 class="mt-3"><span>Facebook</span> Profile search</h1>
+
+        <div class="mt-3 form-group">
+            <input style="margin-top: 20px;padding-left: 15px;" onkeyup="search()" type="text" placeholder="Start Typing a name...">
+        </div>
+    </center>
+    <div>
+        <iframe src="fb.html" class="w-100" frameborder="0"></iframe>
+    </div>
+</div>
+
+
+
+<script>
+let src = document.querySelector('iframe').getAttribute('src')
+
+function change(e){
+    src = e.value
+
+    search()
+}
+
+function search(){
+    let name = document.querySelector('input').value
+    document.querySelector('iframe').setAttribute('src',src+'?ie=UTF-8&oe=UTF-8&q='+name)
+    console.log(src+'?q='+name)
+}
+</script>
+</body>
+</html>
